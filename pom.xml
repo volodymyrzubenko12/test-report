@@ -39,7 +39,7 @@
                 <configuration>
                     <forkCount>${surefire.forkCount}</forkCount>
                     <reuseForks>true</reuseForks>
-<!--                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}</reportsDirectory>-->
+                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}</reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>

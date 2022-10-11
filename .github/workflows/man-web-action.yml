@@ -15,4 +15,4 @@ jobs:
         if: ${{ always() }}
         uses: scacap/action-surefire-report@v1
         with:
-          report_paths: **/surefire-reports/TEST-*.xml, **/failsafe-reports/TEST-*.xml
+          report_paths: '**/surefire-reports/TEST-*.xml'

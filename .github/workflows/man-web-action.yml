@@ -3,6 +3,21 @@ on:
   pull_request:
 
 jobs:
+  Checkstyle:
+    runs-on: ubuntu-latest
+    name: Checkstyle job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run check style
+        uses: asaasdev/checkstyle-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-review'
+          fail_on_error: true
+          filter_mode: file
+          level: error
+          configuration_file: /home/runner/work/ume-main-web/ume-main-web/checkstyle_config.xml
   build:
     name: Build and Run Tests
     runs-on: ubuntu-latest

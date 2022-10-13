@@ -28,6 +28,31 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>ci-test</id>
+            <!-- Run the tests but don't compile. -->
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <maven.test.skip>false</maven.test.skip>
+                <testFailureIgnore>false</testFailureIgnore>
+                <maven.main.skip>true</maven.main.skip>
+                <assembly.skipAssembly>true</assembly.skipAssembly>
+                <surefire.forkCount>2</surefire.forkCount>
+                <surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>
+            </properties>
+
+            <build>
+                <defaultGoal>verify</defaultGoal>
+            </build>
+
+
+        </profile>
+    </profiles>
+
 
     <build>
         <plugins>
@@ -40,7 +65,8 @@
                     <forkCount>${surefire.forkCount}</forkCount>
                     <reuseForks>true</reuseForks>
                     <testFailureIgnore>false</testFailureIgnore>
-                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}</reportsDirectory>
+                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}
+                    </reportsDirectory>
                 </configuration>
             </plugin>
         </plugins>

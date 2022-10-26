@@ -8,7 +8,17 @@ public class A {
 
 
         }
+    }
 
-        dvv
+    void a(String a){
+        if (a.length()>0){
+            System.out.println("1");
+        }
+    }
+
+    void b(String a){
+        if (a.length()>0){
+            System.out.println("1");
+        }
     }
 }

@@ -1,55 +1,36 @@
-# This is a basic workflow to help you get started with Actions
-
-name: main-web
-
+name: SonarCloud
 on:
-  pull_request:
+  push:
     branches:
       - "**"
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
-  Checkstyle:
+  build:
+    name: Build and analyze
     runs-on: ubuntu-latest
-    name: Checkstyle job
     steps:
-      -   name: Checkout
-          uses: actions/checkout@v2
-      -   name: Run check style
-          uses: asaasdev/checkstyle-action@v1
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            reporter: 'github-pr-review'
-            fail_on_error: true
-            filter_mode: file
-            level: error
-            configuration_file: /home/runner/work/ume-main-web/ume-main-web/checkstyle_config.xml
-  Build_test:
-    runs-on: ubuntu-latest
-    name: Build and test
-    steps:
-      -   name: Checkout branch
-          uses: actions/checkout@v3
-
-      -   name: Set up JDK 11
-          uses: actions/setup-java@v3
-          with:
-            java-version: '11'
-            distribution: 'adopt'
-
-      -   name: Cache maven packages
-          uses: actions/cache@v3
-          with:
-            path: ~/.m2
-            key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-            restore-keys: ${{ runner.os }}-m2
-
-      -   name: Maven test
-          run: mvn test --batch-mode --fail-at-end
-      -   name: Publish Test Report
-          if: ${{ always() }}
-          uses: scacap/action-surefire-report@v1
-          with:
-            report_paths: '**/surefire-reports-*/TEST-*.xml'
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=volodymyrzubenko12_test-report

@@ -18,6 +18,8 @@
         <assembly.skipAssembly>true</assembly.skipAssembly>
         <surefire.forkCount>2</surefire.forkCount>
         <surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>
+        <sonar.organization>volodymyrzubenko12</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>

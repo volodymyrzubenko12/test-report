@@ -23,4 +23,12 @@ public class A {
             System.out.println("1");
         }
     }
+
+    void c(String a){
+        if (a.length()>0){
+            System.out.println("1");
+        }
+
+        ss
+    }
 }

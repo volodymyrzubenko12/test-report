@@ -30,48 +30,48 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <profiles>
-        <profile>
-            <id>ci-test</id>
-            <!-- Run the tests but don't compile. -->
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>ci-test</id>-->
+<!--            &lt;!&ndash; Run the tests but don't compile. &ndash;&gt;-->
+<!--            <activation>-->
+<!--                <activeByDefault>false</activeByDefault>-->
+<!--            </activation>-->
 
-            <properties>
-                <maven.test.skip>false</maven.test.skip>
-                <testFailureIgnore>false</testFailureIgnore>
-                <maven.main.skip>true</maven.main.skip>
-                <assembly.skipAssembly>true</assembly.skipAssembly>
-                <surefire.forkCount>2</surefire.forkCount>
-                <surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>
-            </properties>
+<!--            <properties>-->
+<!--                <maven.test.skip>false</maven.test.skip>-->
+<!--                <testFailureIgnore>false</testFailureIgnore>-->
+<!--                <maven.main.skip>true</maven.main.skip>-->
+<!--                <assembly.skipAssembly>true</assembly.skipAssembly>-->
+<!--                <surefire.forkCount>2</surefire.forkCount>-->
+<!--                <surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>-->
+<!--            </properties>-->
 
-            <build>
-                <defaultGoal>verify</defaultGoal>
-            </build>
+<!--            <build>-->
+<!--                <defaultGoal>verify</defaultGoal>-->
+<!--            </build>-->
 
 
-        </profile>
-    </profiles>
+<!--        </profile>-->
+<!--    </profiles>-->
 
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <inherited>true</inherited>
-                <configuration>
-                    <forkCount>${surefire.forkCount}</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}
-                    </reportsDirectory>
-                </configuration>
-            </plugin>
-        </plugins>
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>3.0.0-M5</version>-->
+<!--                <inherited>true</inherited>-->
+<!--                <configuration>-->
+<!--                    <forkCount>${surefire.forkCount}</forkCount>-->
+<!--                    <reuseForks>true</reuseForks>-->
+<!--                    <testFailureIgnore>false</testFailureIgnore>-->
+<!--                    <reportsDirectory>${project.build.directory}/surefire-reports-${surefire.forkNumber}-->
+<!--                    </reportsDirectory>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
     </build>
 
 </project>

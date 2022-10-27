@@ -2,8 +2,8 @@ package a;
 
 public class A {
     public static void main(String[] args) {
-        String s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS";
-        String s2 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS22222222";
+        String s22 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS";
+        String s22222 = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS22222222";
         if (true) {
 
 
@@ -11,6 +11,8 @@ public class A {
 
         }
     }
+
+
 
     void a(String a){
         if (a.length()>0){
@@ -28,7 +30,5 @@ public class A {
         if (a.length()>0){
             System.out.println("1");
         }
-
-        ss
     }
 }

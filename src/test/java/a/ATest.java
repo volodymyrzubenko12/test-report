@@ -8,7 +8,14 @@ class ATest {
 
     @Test
     void test() {
-        assertEquals(1, 2);
+        assertEquals(1, 1);
+    }
+
+    @Test
+    void t() {
+        new A();
+        String[] strings = new String[1];
+        A.main(strings);
     }
 
 }

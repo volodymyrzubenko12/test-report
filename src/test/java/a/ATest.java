@@ -17,6 +17,7 @@ class ATest {
         new A();
         String[] strings = new String[1];
         A.main(strings);
+        throw  new RuntimeException("test");
     }
 
 }

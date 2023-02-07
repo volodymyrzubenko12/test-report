@@ -46,5 +46,5 @@ jobs:
           with:
             java-version: 11
         - name: run
-          run: mvn test
+          run: mvn test -DtestFailureIgnore=false
 

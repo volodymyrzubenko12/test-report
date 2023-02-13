@@ -7,7 +7,7 @@ class BTest {
     @org.junit.jupiter.api.Test
     void m(){
         boolean a = new a.B().a();
-        assertTrue(a);
+        assertFalse(a);
 
     }
 
